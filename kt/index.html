@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KT 멤버십</title>
+    <link href="css/main.css" rel="stylesheet" />
+    <script>
+        window.onload = function () {
+
+            let loadingPage = document.getElementById('loading');
+
+            setTimeout(function () {
+                loadingPage.style.opacity = '0';
+                loadingPage.style.transition = '2s'
+                loadingPage.style.transform = 'scale(2)';
+                loadingPage.style.zIndex = '-99';
+            }, 2000)//setTimeout end
+
+            let mainVisual = document.getElementsByClassName('main_visual')[0];
+            let mainOpenBtn = mainVisual.getElementsByClassName('open_btn')[0];
+            let mainCloseBtn = mainVisual.getElementsByClassName('close_btn')[0];
+            let main01 = mainVisual.getElementsByClassName('main01')[0];
+            let main02 = mainVisual.getElementsByClassName('main02')[0];
+
+            main01.style.display == 'block';
+            main02.style.display = 'none';
+
+            mainCloseBtn.onclick = function () {
+                if (main01.style.display == 'block');
+                main01.style.display = 'none';
+                main02.style.display = 'block';
+            }//mainCloseBtn.onclick end
+
+            mainOpenBtn.onclick = function () {
+                if (main01.style.display == 'none') {
+                    main02.style.display = 'none';
+                    main01.style.display = 'block';
+                }
+            }//mainOpenBtn.onclick end
+
+            let cont02 = document.getElementsByClassName('cont02')[0];
+            let tapMenu = cont02.getElementsByTagName('li');
+            let cont02List = cont02.getElementsByClassName('list');
+
+            for (let i = 0; i < tapMenu.length; i++) {
+                tapMenu[i].onclick = function () {
+                    tapMenu[0].classList.remove('on');
+                    tapMenu[1].classList.remove('on');
+                    this.classList.add('on');
+
+                    tapMenu[0].style.color = '#82A1A6';
+                    tapMenu[1].style.color = '#82A1A6';
+                    this.style.color = '#333';
+
+                    cont02List[0].classList.remove('on')
+                    cont02List[1].classList.remove('on')
+                    cont02List[i].classList.add('on');
+
+                }//tapMenu[i].onclick end
+            }//for end
+
+            let cont03 = document.getElementsByClassName('cont03')[0];
+            let cont03PrevBtn = cont03.getElementsByClassName('prev_btn')[0];
+            let cont03NextBtn = cont03.getElementsByClassName('next_btn')[0];
+            let cont03Item = cont03.getElementsByClassName('item');
+            let i = 0;
+
+            cont03NextBtn.onclick = function () {
+                i++;
+                if (i >= cont03Item.length) {
+                    i = cont03Item.length - 1;
+                }//if end
+                console.log(i);
+                cont03Item[0].classList.remove('on');
+                cont03Item[1].classList.remove('on');
+                cont03Item[2].classList.remove('on');
+                cont03Item[i].classList.add('on');
+            }//cont03NextBtn.onclick end
+
+            cont03PrevBtn.onclick = function () {
+                i--;
+                if (i <= 0) {
+                    i = 0;
+                }
+                cont03Item[0].classList.remove('on');
+                cont03Item[1].classList.remove('on');
+                cont03Item[2].classList.remove('on');
+                cont03Item[i].classList.add('on');
+            }//cont03PrevBtn.onclick end
+
+            let cont04 = document.getElementsByClassName('cont04')[0];
+            let cont04TapMenu = cont04.getElementsByTagName('li');
+            let cont04List = cont04.getElementsByClassName('list');
+
+            for (let i = 0; i < cont04TapMenu.length; i++) {
+                cont04TapMenu[i].onclick = function () {
+                    cont04TapMenu[0].classList.remove('on');
+                    cont04TapMenu[1].classList.remove('on');
+                    cont04TapMenu[2].classList.remove('on');
+                    this.classList.add('on');
+
+                    cont04List[0].classList.remove('on');
+                    cont04List[1].classList.remove('on');
+                    cont04List[2].classList.remove('on');
+                    cont04List[i].classList.add('on');
+                }//cont04TapMenu[i].onclick end
+            }//for end
+        }//window.onload end
+    </script>
+</head>
+
+<body>
+    <div id="loading">
+        <img src="img/logo.png" alt="로고" />
+    </div><!-- #loading end -->
+
+    <header>
+        <div class="inner">
+            <div class="top_menu_wrap">
+                <h1>
+                    <a href="#">
+                        <img src="img/logo.png" alt="로고" />
+                    </a>
+                </h1>
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#"><img src="img/logo_guide.png" alt="가이드" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="img/logo_barcode.png" alt="바코드" /></a>
+                        </li>
+                        <li>
+                            <a href="#"><img src="img/logo_locate.png" alt="제휴사위치" /></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div><!-- .top_menu_wrap end -->
+            <nav>
+                <ul class="bottom_menu_wrap">
+                    <li><img src="img/icon_home.png" alt="홈" /></li>
+                    <li><img src="img/icon_user.png" alt="마이" /></li>
+                    <li><img src="img/icon_barcode.png" alt="바코드" /></li>
+                    <li><img src="img/icon_bell.png" alt="알림" /></li>
+                    <li><img src="img/icon_more.png" alt="더보기" /></li>
+                </ul><!-- .bottom_menu_wrap end -->
+            </nav>
+        </div><!-- .inner end -->
+    </header>
+
+    <main>
+        <section class="main_visual">
+            <div class="main01">
+                <img src="img/main_visual01.png" />
+                <div class="main_text">
+                    <div class="title">
+                        <p class="user">Hello 김기*님</p>
+                        <img class="close_btn" src="img/icon_up.png" alt="접기" />
+                    </div><!-- .title end -->
+                    <p class="thema_text">김기*님,<br />
+                        꽃놀이 가기 좋은 날!<br />
+                        봄에 피는 꽃들 중 <br />
+                        좋아하는 꽃이 있나요?
+                    </p>
+                    <div class="user_point">
+                        <ul>
+                            <li>Silver</li>
+                            <li>47,464p</li>
+                        </ul>
+                        <ul>
+                            <li>쿠폰</li>
+                            <li>1</li>
+                        </ul>
+                    </div><!-- .user_point end -->
+                </div><!-- .main_text end -->
+            </div><!-- .main01 end -->
+
+            <div class="main02">
+                <div class="text">
+                    <div class="title">
+                        <p class="user">Hello 김기*님</p>
+                        <img class="open_btn" src="img/icon_arrowdown.png" alt="펼치기" />
+                    </div><!-- .title end -->
+                    <div class="user_point">
+                        <ul>
+                            <li>Silver</li>
+                            <li>47,464p</li>
+                        </ul>
+                        <ul>
+                            <li>쿠폰</li>
+                            <li>1</li>
+                        </ul>
+                    </div><!-- .user_point end -->
+                </div><!-- .text end -->
+            </div><!-- .main02 end -->
+        </section><!-- .main_visual end -->
+
+        <section class="cont01">
+            <figure>
+                <a href="#">
+                    <img src="img/cont01_1.png" alt="영화예매혜택" />
+                    <p class="text">
+                        영화예매 상시할인<br />
+                        더 커진 혜택, 더 많은 감동<br />
+                        최대 4인, 2만원 할인
+                    </p><!-- .text end -->
+                </a>
+            </figure>
+        </section><!-- .cont01 end -->
+
+        <section class="cont02">
+            <div class="inner">
+                <h2>
+                    김기*님,<br />
+                    마음에 드는 헤택을 골라보세요!
+                </h2>
+                <ul class="tap_menu">
+                    <li class="on">나들이 가서 쓰기 좋은 혜택</li>
+                    <li>여행 필수 헤택</li>
+                </ul>
+                <div class="list on">
+                    <div class="item">
+                        <a href="#">
+                            <figure>
+                                <img src="img/starbucks_logo.png" alt="스타벅스" />
+                            </figure>
+                            <div class="text">
+                                <span>VIP</span>
+                                <P>아메리카노 사이즈업</P>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <figure>
+                                <img src="img//GS25_logo.png" alt="GS25" />
+                            </figure>
+                            <div class="text">
+                                <span>VIP</span>
+                                <P>1,000원당 100원 할인</P>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <figure>
+                                <img src="img/everland_logo.png" alt="에버랜드" />
+                            </figure>
+                            <div class="text">
+                                <span>일반</span>
+                                <P>본인 40% + 동반 할인</P>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <figure>
+                                <img src="img/megacoffee_logo.png" alt="메가커피" />
+                            </figure>
+                            <div class="text">
+                                <span>VIP</span>
+                                <P>아메리카노 사이즈업</P>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+                </div><!-- .list end -->
+
+                <div class="list">
+                    <div class="item">
+                        <a href="#">
+                            <figure>
+                                <img src="img/brand_01.png" alt="한화리조트" />
+                            </figure>
+                            <div class="text">
+                                <span>VIP</span>
+                                <P>객실 할인</P>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <figure>
+                                <img src="img/brand_02.png" alt="아고다" />
+                            </figure>
+                            <div class="text">
+                                <span>VIP</span>
+                                <P>전 지역 7% 할인, 지정 지역 10% 할인</P>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <figure>
+                                <img src="img/brand_03.png" alt="롯데면세점" />
+                            </figure>
+                            <div class="text">
+                                <span>일반</span>
+                                <P>(온)제휴적립금, 등급 UP<br />
+                                    (오프) 선불카드 등급 UP</P>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <a href="#">
+                            <figure>
+                                <img src="img/brand_04.png" alt="신세계면세점" />
+                            </figure>
+                            <div class="text">
+                                <span>일반</span>
+                                <P>(온)추가할인, 적립금 <br />
+                                    (오프)선불카드 등급 UP</P>
+                            </div><!-- .text end -->
+                        </a>
+                    </div><!-- .item end -->
+                </div><!-- .list end -->
+                <P class="cont02_btn"><a href="#">혜택 더보기</a></P>
+            </div><!-- .inner end -->
+        </section><!-- .cont02 end -->
+
+        <section class="cont03">
+            <div class="inner">
+                <div class="item on">
+                    <figure>
+                        <a href="#">
+                            <img src="img/himmune2.jpg" alt="마음을 담은, 건강한 선물
+                    하이뮨몰 10% 할인혜택!" />
+                            <div class="text">
+                                <p>KT멤버십</p>
+                                <p>마음을 담은, 건강한 선물<br />
+                                    하이뮨몰 10% 할인혜택!</p>
+                            </div><!-- .text end -->
+                        </a>
+                    </figure>
+                </div><!-- .item end -->
+                <div class="item">
+                    <figure>
+                        <a href="#">
+                            <img src="img/event02.jpg" alt="최대 30만원 혜택으로
+                            면세 쇼핑 여행하자!" />
+                            <div class="text">
+                                <p>KT멤버십 X 신라아이파크면세점</p>
+                                <p>최대 30만원 혜택으로<br />
+                                    면세 쇼핑 여행하자!</p>
+                            </div><!-- .text end -->
+                        </a>
+                    </figure>
+                </div><!-- .item end -->
+                <div class="item">
+                    <figure>
+                        <a href="#">
+                            <img src="img/himmune2.jpg" alt="마음을 담은, 건강한 선물
+                    하이뮨몰 10% 할인혜택!" />
+                            <div class="text">
+                                <p>KT멤버십3</p>
+                                <p>마음을 담은, 건강한 선물<br />
+                                    하이뮨몰 10% 할인혜택!</p>
+                            </div><!-- .text end -->
+                        </a>
+                    </figure>
+                </div><!-- .item end -->
+                <div class="arrow_btn">
+                    <figure>
+                        <img class=" prev_btn" src="img/icon_prev.png" alt=" 이전" />
+                    </figure>
+                    <figure>
+                        <img class="next_btn" src="img/icon_next.png" alt="다음" />
+                    </figure>
+                </div><!-- .arrow_btn -->
+            </div><!-- .inner end -->
+        </section><!-- .cont03 end -->
+
+        <section class="cont04">
+            <div class="inner">
+                <h2><span>김기*님,</span><br />
+                    오늘은 이런 혜택 어때요?
+                </h2>
+                <ul class="tap_menu">
+                    <li class="on">#빵빵한 아침식사</li>
+                    <li>#간편든든한끼</li>
+                    <li>#달달간식</li>
+                </ul><!-- .tap_menu end -->
+                <div class="list on">
+                    <div class="item">
+                        <figure>
+                            <img src="img/bread_item01.png" alt="파리크라상" />
+                        </figure>
+                        <div>
+                            <h3>파리크라상</h3>
+                            <span>1,000원당 100원 할인</span>
+                        </div>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/bread_item02.png" alt="파리크라상" />
+                        </figure>
+                        <div>
+                            <h3>파리바게뜨</h3>
+                            <span>1,000원당 50원 할인</span>
+                        </div>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/bread_item03.png" alt="파리크라상" />
+                        </figure>
+                        <div>
+                            <h3>뚜레쥬르</h3>
+                            <span>1,000원당 150원 할인</span>
+                        </div>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/bread_item04.png" alt="파리크라상" />
+                        </figure>
+                        <div>
+                            <h3>던킨</h3>
+                            <span>아메리카노(s)+글레이즈드</span>
+                        </div>
+                    </div><!-- .item end -->
+                </div><!-- .list end -->
+
+                <div class="list ">
+                    <div class="item">
+                        <figure>
+                            <img src="img/food_item01.png" alt="GS25" />
+                        </figure>
+                        <div>
+                            <h3>GS25</h3>
+                            <span>1,000원당 100원 할인</span>
+                        </div>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/food_item02.png" alt="파리크라상" />
+                        </figure>
+                        <div>
+                            <h3>파리바게뜨</h3>
+                            <span>1,000원당 100원 할인</span>
+                        </div>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/food_item03.png" alt="CU" />
+                        </figure>
+                        <div>
+                            <h3>CU</h3>
+                            <span>아침 간편식 1,000원당 200원 할인</span>
+                        </div>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/food_item04.png" alt="그리팅" />
+                        </figure>
+                        <div>
+                            <h3>그리팅</h3>
+                            <span>1만원 할인<br />
+                                (3만원 이상 결제 시)</span>
+                        </div>
+                    </div><!-- .item end -->
+                </div><!-- .list end -->
+
+                <div class="list">
+                    <div class="item">
+                        <figure>
+                            <img src="img/bread_item01.png" alt="파리크라상" />
+                        </figure>
+                        <div>
+                            <h3>파리크라상</h3>
+                            <span>1,000원당 100원 할인</span>
+                        </div>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/bread_item02.png" alt="파리크라상" />
+                        </figure>
+                        <div>
+                            <h3>파리바게뜨</h3>
+                            <span>1,000원당 50원 할인</span>
+                        </div>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/bread_item03.png" alt="파리크라상" />
+                        </figure>
+                        <div>
+                            <h3>뚜레쥬르</h3>
+                            <span>1,000원당 150원 할인</span>
+                        </div>
+                    </div><!-- .item end -->
+
+                    <div class="item">
+                        <figure>
+                            <img src="img/bread_item04.png" alt="파리크라상" />
+                        </figure>
+                        <div>
+                            <h3>던킨</h3>
+                            <span>아메리카노(s)+글레이즈드</span>
+                        </div>
+                    </div><!-- .item end -->
+                </div><!-- .list end -->
+            </div><!-- .inner end -->
+        </section><!-- .cont04 end -->
+
+        <section class="cont05">
+            <div class="inner">
+                <h2><span>김기*님,</span><br />
+                    영화/공연을 할인가로 즐기세요!
+                </h2>
+                <div class="movie">
+                    <div class="title">
+                        <h3>영화</h3>
+                        <a href="#">
+                            <img src="img/icon_gopage.png" alt="더보기" />
+                        </a>
+                    </div><!-- .title end -->
+                    <div class="movie_list">
+                        <div class="item">
+                            <a href="#">
+                                <figure>
+                                    <img src="img/movie01.jpg" alt="존 윅" />
+                                </figure>
+                                <div>
+                                    <h4>존 윅</h4>
+                                    <p>예매율 34.81%</p>
+                                </div>
+                            </a>
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <a href="#">
+                                <figure>
+                                    <img src="img/movie02.jpg" alt="더 퍼스트 슬램덩크" />
+                                </figure>
+                                <div>
+                                    <h4>더 퍼스트 슬램덩크</h4>
+                                    <p>예매율 9.14%</p>
+                                </div>
+                            </a>
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <a href="#">
+                                <figure>
+                                    <img src="img/movie03.jpg" alt="리바운드" />
+                                </figure>
+                                <div>
+                                    <h4>리바운드</h4>
+                                    <p>예매율 7.72%</p>
+                                </div>
+                            </a>
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <a href="#">
+                                <figure>
+                                    <img src="img/movie04.jpg" alt="슈퍼 마리오 브라더스" />
+                                </figure>
+                                <div>
+                                    <h4>슈퍼 마리오 브라더스</h4>
+                                    <p>예매율 9.33%</p>
+                                </div>
+                            </a>
+                        </div><!-- .item end -->
+                    </div><!-- .movie_list end -->
+                </div><!-- .movie end -->
+                <div class="musical">
+                    <div class="title">
+                        <h3>뮤지컬</h3>
+                        <a href="#">
+                            <img src="img/icon_gopage.png" alt="더보기" />
+                        </a>
+                    </div><!-- .title end -->
+                    <div class="musical_list">
+                        <div class="item">
+                            <a href="#">
+                                <figure>
+                                    <img src="img/musical_item01.jpg" alt="존 윅" />
+                                </figure>
+                                <h4>뮤지컬<br />
+                                    <맘마미아!>
+                                </h4>
+                            </a>
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <a href="#">
+                                <figure>
+                                    <img src="img/musical_item02.jpg" alt="존 윅" />
+                                </figure>
+                                <h4>뮤지컬<영웅><br />
+                                        블루스퀘어</h4>
+                            </a>
+                        </div><!-- .item end -->
+                        <div class="item">
+                            <a href="#">
+                                <figure>
+                                    <img src="img/musical_item03.jpg" alt="존 윅" />
+                                </figure>
+                                <h4>뮤지컬<br />
+                                    <베토벤>
+                                </h4>
+                            </a>
+                        </div><!-- .item end -->
+                    </div><!-- .musical_list end -->
+                </div><!-- .musical end -->
+            </div><!-- .inner end -->
+        </section><!-- .cont05 end -->
+
+        <footer>
+            <ul>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">개인정보 처리방침</a></li>
+                <li><a href="#">고객센터</a></li>
+                <li><a href="#">사업자 정보</a></li>
+            </ul>
+            <p>Copyright2023 KT corp.All rights reserved.</p>
+        </footer>
+    </main>
+</body>
+
+</html>
